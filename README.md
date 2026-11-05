@@ -18,10 +18,10 @@
 `sony_vm.py`、`engine/`、`profiles/` 和 `tests/` 是项目编写的离线工具及测试。现有生成配方面向 A7M3 4.03，A7R3A 配置仅用于清点，不表示 A7R3A 可构建或启动。A7M3 参考项目只作为外部 Git 子模块链接，不复制其源码、补丁、固件分析或许可证文件：
 
 ```sh
-git clone --recurse-submodules https://github.com/chuer749/sony-camera-qemu.git
+git clone https://github.com/chuer749/sony-camera-qemu.git
 ```
 
-若已克隆仓库，可用 `git submodule update --init` 获取锁定版本。子模块地址与版本见 `.gitmodules` 和 [第三方依赖说明](THIRD-PARTY.md)。
+默认克隆不会下载 A7M3 内容。只有需要使用依赖它的 A7M3 离线配方时，才运行 `git submodule update --init -- third_party/a7m3` 获取锁定版本。子模块地址与版本见 `.gitmodules` 和 [第三方依赖说明](THIRD-PARTY.md)。
 
 主机端串口测试和离线验证的历史摘要见 [VALIDATION.md](docs/VALIDATION.md)。USB 研究入口 `service_probe.py` 与 `reference_replay.py` 是研究代码，不需要用于 QEMU 离线研究；完整私有运行记录未发布。
 
