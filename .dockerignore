@@ -1,0 +1,12 @@
+**
+!sony_vm.py
+!profiles/
+!profiles/**
+!third_party/
+!third_party/**
+!engine/
+!engine/Dockerfile
+!engine/prepare_source.py
+!engine/smoke.py
+**/__pycache__/
+**/*.pyc

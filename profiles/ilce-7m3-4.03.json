@@ -1,0 +1,23 @@
+{
+  "id": "ilce-7m3-4.03",
+  "model": "ILCE-7M3",
+  "firmware": "4.03",
+  "status": "upstream-reported-shell",
+  "recipe": "a7m3-4.03",
+  "machine": "cxd90045",
+  "required_partitions": {"2": 20971520, "3": 50331648, "7": 8388608, "10": 12582912, "11": 524288000, "12": 41943040, "15": 314572800, "18": 20971520},
+  "exact_partition_hashes": {
+    "3": "39ce959e61351baca7b630a66c508145c744ed04040e0191c67c064df9327454",
+    "7": "0926327cbbc6bb2ad185fd63624a6007804efb11a11d0797205aefda11aa98ae",
+    "15": "c506005d0f37cd5c0101467caa386a1059366a0b1ce3de970deecf1c2dfceea0"
+  },
+  "boot_hashes": {
+    "vmlinux.bin": "13649dc02443d761df58ba2745171acb089f7865c12fd384df1191e2c45c5cd6",
+    "initrd-4.03.img": "0791900525b4e5040edd0b233fb513bc242a3480eca88feac5c355410def9d10"
+  },
+  "output_hashes": {
+    "vmlinux-console.bin": "e6c17a94b813111d3a70b95f303d60c07b40da399146a4c0038d075976169b0f",
+    "initrd-qemu.img": "ec4dc5c97219a282d1d93087ade79d1de962d3c1d6bdde0e715510a2b31b4eb8"
+  },
+  "limitations": ["No native menu, display or capture pipeline", "Simplified RAM model", "Only the upstream 4.03 immutable partition fingerprints are accepted"]
+}

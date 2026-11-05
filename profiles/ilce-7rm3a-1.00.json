@@ -1,0 +1,9 @@
+{
+  "id": "ilce-7rm3a-1.00",
+  "model": "ILCE-7RM3A",
+  "firmware": "1.00",
+  "status": "candidate-needs-offline-firmware",
+  "recipe": null,
+  "machine": null,
+  "limitations": ["CXD90045 is a platform candidate, not verified hardware identity", "No verified partition layout or patch locations", "Camera service tests remain stopped in the parent workspace"]
+}

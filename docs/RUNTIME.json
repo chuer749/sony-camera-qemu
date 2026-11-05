@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-31",
+  "image": "sony-vm:dev",
+  "platform": "linux/arm64",
+  "qemu_source_commit": "1909382c0d3533051cead7fde70ca8e84807ee14",
+  "reference_commit": "020603daf84aff35069a1071a6385f80fb41f397",
+  "qemu_version": "QEMU emulator version 5.1.0 (-dirty)",
+  "python_version": "3.10.12",
+  "machine": "cxd90045",
+  "arm_execution_and_uart": "passed",
+  "runtime_doctor": "passed",
+  "sony_firmware_used": false,
+  "camera_access": false,
+  "camera_firmware_boot": "not-tested"
+}

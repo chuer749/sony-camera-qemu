@@ -1,11 +1,32 @@
-# Sony Camera QEMU
+# Sony VM：A7R IIIA 研究归档
 
-Open-source research into QEMU emulation of Sony cameras, starting with the **Sony α7R IIIA (A7R3A, ILCE-7RM3A)**.
+本仓库记录 Sony α7R IIIA（ILCE-7RM3A）在 QEMU 中的离线启动与图形设备研究，以及配套的离线工具原型。项目于 2026-11-04 按维护者决定归档，后续实验已停止；它不是可用的相机模拟器。
 
-本项目首先以 **索尼 A7R3A（α7R IIIA，ILCE-7RM3A）** 为研究和模拟目标，后续探索支持其他机型。
+## 已验证到哪里
 
-## Status / 当前状态
+- 使用实验性修改的内核副本，在 CXD90045 候选 QEMU 机器模型上观察到 Linux 串口日志，并挂载 ext2 初始文件系统。
+- 用本地备份构造的私有合成盘在 QEMU 中识别出分区并访问 `/usr`。固件和虚拟盘未包含在本仓库。
+- 在隔离的磁盘副本中短路 `grm_gles` 初始化后，原厂 `im.elf` 启动并进入异常监视器；退出后观察到 shell 命令执行。该路径不是正常启动。
+- 对 `/dev/dmpgles2` 的部分 ioctl 与 mmap 行为做了静态和动态观察。共享缓冲区、事件协议、绘图调用链和真实硬件语义仍未确认。
 
-Early research stage: the A7R3A firmware has not yet been booted in QEMU. Source code and documentation will be organized and added later.
+**没有实现或验证**：正常无异常启动、GPU、主机可见画面、原生菜单、菜单输入、触控、拍摄链。返回候选值、绕过初始化、命令行存活都不代表图形功能完成。
 
-目前处于早期研究阶段，尚未在 QEMU 中启动 A7R3A 固件；项目代码与文档将在整理后逐步加入。
+细节与观察边界见 [V002 启动与图形阻塞记录](docs/validations/V002-r3a-boot.md)。整理过的实验脚本在 [research/r3a](research/r3a/README.md)；本仓库不含完整串口日志、实验磁盘或固件输入。
+
+## 离线工具原型
+
+`sony_vm.py`、`engine/`、`profiles/` 和 `tests/` 是项目编写的离线工具及测试。现有生成配方面向 A7M3 4.03，A7R3A 配置仅用于清点，不表示 A7R3A 可构建或启动。A7M3 参考项目只作为外部 Git 子模块链接，不复制其源码、补丁、固件分析或许可证文件：
+
+```sh
+git clone --recurse-submodules https://github.com/chuer749/sony-camera-qemu.git
+```
+
+若已克隆仓库，可用 `git submodule update --init` 获取锁定版本。子模块地址与版本见 `.gitmodules` 和 [第三方依赖说明](THIRD-PARTY.md)。
+
+主机端串口测试和离线验证的历史摘要见 [VALIDATION.md](docs/VALIDATION.md)。USB 研究入口 `service_probe.py` 与 `reference_replay.py` 是研究代码，不需要用于 QEMU 离线研究；完整私有运行记录未发布。
+
+## 隐私与许可
+
+原始固件、分区转储、相机设置、证书、合成虚拟盘、完整日志及本机 USB 报告均未发布。请只使用自己有权读取的固件副本；仓库不提供固件，也不负责采集相机数据。
+
+本仓库未为项目编写的代码声明开源许可证。A7M3 依赖仍受其上游仓库许可证约束，详见子模块。公开仓库本身不代表项目代码获得再发布许可。
